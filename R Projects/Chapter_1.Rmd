@@ -1,0 +1,139 @@
+### R: What It Does and How It Does It
+
+------------------------------------------------------------------------
+
+#### Data Frames
+
+```{r}
+name <- c("al","barbara","charles","donna","ellen","fred")
+```
+
+```{r}
+height <- c(72,64,73,65,66,71)
+```
+
+```{r}
+height
+```
+
+```{r}
+weight <- c(195,117,205,122,125,199)
+```
+
+```{r}
+weight
+```
+
+```{r}
+gender <- c("M","F","M","F","F","M")
+```
+
+```{r}
+gender
+```
+
+```{r}
+factor_gender <-factor(gender)
+```
+
+```{r}
+factor_gender
+```
+
+```{r}
+d <- data.frame(name,factor_gender,height,weight)
+```
+
+```{r}
+d
+```
+
+```{r}
+# height of the third person?
+d[3,3]
+```
+
+```{r}
+# All the information for the fifth person
+d[5,]
+```
+
+```{r}
+d$height
+```
+
+```{r}
+mean(d$height)
+```
+
+```{r}
+mean(d$height[d$factor_gender == "F"])
+```
+
+```{r}
+with(d,mean(height[factor_gender == "F"]))
+```
+
+```{r}
+# how many rows
+nrow(d)
+```
+
+```{r}
+ncol(d)
+```
+
+```{r}
+aptitude <- c(35,20,32,22,18,15)
+```
+
+```{r}
+d.apt <- cbind(d,aptitude)
+```
+
+```{r}
+d.apt
+```
+
+```{r}
+xx <- c(3,4,5)
+```
+
+```{r}
+xx <- append(xx,6)
+```
+
+```{r}
+xx <- append(xx, 2, after = 0)
+```
+
+```{r}
+xx
+```
+
+```{r}
+yy <-NULL
+```
+
+```{r}
+10 %% 3
+```
+
+```{r}
+5 %% 2
+```
+
+```{r}
+4 %% 2
+```
+
+```{r}
+for(i in 1:length(xx)){
+  if(xx[i] %% 2 == 0){yy[i]<- "EVEN"}
+else{yy[i] <- "ODD"}
+}
+```
+
+```{r}
+yy
+```
