@@ -1,4 +1,123 @@
-Chapter 2:
+### Working with Packages
+
+------------------------------------------------------------------------
+
+#### Installing Packages
+
+```{r}
+library("datasets", lib.loc="C:/Program Files/R/R-3.4.0/library")
+```
+
+```{r}
+library(MASS)
+```
+
+#### Examining Data
+
+Heads and tails
+
+```{r}
+head(airquality)
+```
+
+```{r}
+tail(airquality)
+```
+
+Missing data
+
+```{r}
+mean(airquality$Ozone)
+```
+
+```{r}
+mean(airquality$Ozone, na.rm=TRUE)
+```
+
+Subsets
+
+```{r}
+Month.Day.Ozone <- subset(airquality, select = c(Month,Day,Ozone))
+```
+
+```{r}
+head(Month.Day.Ozone)
+```
+
+```{r}
+August.Ozone <- subset(airquality, Month == 8, select = c(Month,Day,Ozone))
+```
+
+```{r}
+head(August.Ozone)
+```
+
+#### R Formulas
+
+```{r}
+analysis <- lm(Temp ~ Month, data=airquality)
+```
+
+```{r}
+summary(analysis)
+```
+
+```{r}
+plot(airquality)
+```
+
+```{r}
+s <- summary(analysis)
+```
+
+```{r}
+s$coefficients[2,1]
+```
+
+#### More Packages
+
+```{r}
+install.packages("tidyverse")
+```
+
+#### Exploring the tidyverse
+
+```{r}
+aq.no.missing <-drop_na(airquality)
+```
+
+```{r}
+head(aq.no.missing)
+```
+
+```{r}
+library(tibble)
+```
+
+```{r}
+space.revenues <- tibble(
+  Industry = c(
+    "Commercial Satellites Delivered",
+    "Satellite Services",
+    "Satellite Ground Equipment",
+    "Commercial Launches",
+    "Remote Sensing Data"
+  ),
+  `1990` = c(1000, 800, 860, 570, 155),
+  `1991` = c(1300, 1200, 1300, 380, 190),
+  `1992` = c(1300, 1500, 1400, 450, 210),
+  `1993` = c(1100, 1850, 1600, 465, 250),
+  `1994` = c(1400, 2330, 1970, 580, 300)
+)
+```
+
+```{r}
+space.revenues
+```
+
+```{r}
+space.revenues["Satellite Services",2]
+```
 
 ```{r}
 
