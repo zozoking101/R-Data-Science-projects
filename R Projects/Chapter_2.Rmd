@@ -1,3 +1,7 @@
+---
+---
+---
+
 ### Working with Packages
 
 ------------------------------------------------------------------------
@@ -74,12 +78,6 @@ s <- summary(analysis)
 s$coefficients[2,1]
 ```
 
-#### More Packages
-
-```{r}
-install.packages("tidyverse")
-```
-
 #### Exploring the tidyverse
 
 ```{r}
@@ -88,10 +86,6 @@ aq.no.missing <-drop_na(airquality)
 
 ```{r}
 head(aq.no.missing)
-```
-
-```{r}
-library(tibble)
 ```
 
 ```{r}
@@ -120,5 +114,9 @@ space.revenues["Satellite Services",2]
 ```
 
 ```{r}
+space.revenues[2,2]
+```
 
+```{r}
+revenues.industry
 ```
