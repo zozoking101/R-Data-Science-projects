@@ -1,0 +1,46 @@
+---
+title: "Chapter_3"
+author: "Zoe"
+date: "2025-09-10"
+output: html_document
+---
+
+### Getting Graphic
+
+------------------------------------------------------------------------
+
+#### Histograms
+
+```{r}
+library(datasets)
+```
+
+```{r}
+head(airquality)
+```
+
+```{r}
+hist(airquality$Temp)
+```
+
+```{r}
+hist(airquality$Temp,xlab="Temperature (Degrees
+Fahrenheit)",main="Temperatures in New York City May 1 - September 30, 1973")
+```
+
+#### Density plots
+
+```{r}
+hist(
+  airquality$Temp,
+  xlab = "Temperature (Degrees Fahrenheit)",
+  main = "Temperatures in New York City May 1 - September 30, 1973",
+  probability = TRUE
+)
+
+lines(density(airquality$Temp), col = "blue", lwd = 2)
+```
+
+```{r}
+lines(density(airquality$Temp))
+```
