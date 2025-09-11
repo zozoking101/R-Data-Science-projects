@@ -41,6 +41,42 @@ hist(
 lines(density(airquality$Temp), col = "blue", lwd = 2)
 ```
 
+#### Bar plots
+
 ```{r}
-lines(density(airquality$Temp))
+library(MASS)
+```
+
+```{r}
+head(Cars93[1:3])
+```
+
+```{r}
+table(Cars93$Type)
+```
+
+```{r}
+barplot(table(Cars93$Type))
+```
+
+```{r}
+barplot(table(Cars93$Type),ylim=c(0,25),xlab="Type", ylab="Frequency", axis.lty="solid",space=.5)
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+USA.Cars93 <- filter(Cars93,Origin == "USA")
+```
+
+#### Grouping the bars
+
+```{r}
+females <- HairEyeColor[,,2]
+```
+
+```{r}
+females
 ```
