@@ -80,3 +80,185 @@ females <- HairEyeColor[,,2]
 ```{r}
 females
 ```
+
+```{r}
+color.names = c("black","grey40","grey80","white")
+```
+
+```{r}
+t(females)
+```
+
+```{r}
+par(mar=c(5,4,4,7)); barplot(t(females),beside=T,ylim=c(0,70),xlab="Hair Color",ylab="Frequency of Eye Color", col=color.names,axis.lty="solid"); legend("topright", rownames(t(females)), cex=0.8, fill=color.names, title="Eye Color", inset=c(-0.25,0), xpd=TRUE)
+```
+
+#### Quick Suggested Project
+
+```{r}
+males <- HairEyeColor[,,1]
+```
+
+```{r}
+males
+```
+
+```{r}
+color.names <- c("black", "grey40", "grey80", "white")
+```
+
+```{r}
+t(males)
+```
+
+```{r}
+par(mar = c(5, 4, 4, 7)); bar_midpoints <- barplot(t(males), beside = TRUE, ylim = c(0, 70), xlab = "Hair Color", ylab = "Frequency of Eye Color", col = color.names, axis.lty = "solid"); legend("topright", legend = rownames(t(males)), cex = 0.8, fill = color.names, title = "Eye Color", inset = c(-0.25, 0), xpd = TRUE)
+```
+
+#### LEGENDARY COLORS
+
+```{r}
+color.names <- c("saddlebrown",  # Brown eyes
+                 "deepskyblue",  # Blue eyes
+                 "goldenrod",    # Hazel eyes
+                 "forestgreen")  # Green eyes
+```
+
+```{r}
+brown.colors <- colors()[grep("brown", colors())]
+```
+
+```{r}
+brown.colors
+```
+
+```{r}
+blue.colors <- colors()[grep("blue", colors())]
+```
+
+```{r}
+blue.colors
+```
+
+```{r}
+hazel.colors <- colors()[grep("tan|gold|khaki|wheat|burlywood", colors())]
+```
+
+```{r}
+hazel.colors
+```
+
+```{r}
+green.colors <- colors()[grep("green", colors())]
+```
+
+```{r}
+green.colors
+```
+
+#### QUICK SUGGESTED PROJECT: GROUPING REVISITED
+
+```{r}
+# Subset Cars93 to just Type and Origin
+Type.Origin <- subset(Cars93, select = c(Type, Origin))
+```
+
+```{r}
+head(Type.Origin)
+```
+
+```{r}
+tbl <- table(Type.Origin$Type, Type.Origin$Origin)
+```
+
+```{r}
+tbl
+```
+
+```{r}
+mat <- t(tbl)
+```
+
+```{r}
+cols_map <- c("USA" = "black", "non-USA" = "white")
+```
+
+```{r}
+cols <- cols_map[rownames(mat)]
+```
+
+```{r}
+par(mar = c(5,4,4,7)); bar_mid <- barplot(mat, beside = TRUE, col = cols, border = "black", ylim = c(0, max(mat) + 5), xlab = "Type", ylab = "Frequency", main = "Car Types by Origin"); legend("topright", legend = rownames(mat), fill = cols, border = "black", title = "Origin", inset = c(-0.25, 0), xpd = TRUE)
+
+```
+
+#### Pie graphs
+
+```{r}
+pie(table(Cars93$Type))
+```
+
+#### Scatterplots
+
+```{r}
+plot(airquality$Wind,airquality$Temp, pch=16,xlab = "Wind Velocity (MPH)", ylab ="Temperature (Fahrenheit)", main = "Temperature vs Wind Velocity")
+```
+
+```{r}
+plot(airquality$Temp ~ airquality$Wind, pch=16,xlab = "Wind Velocity
+(MPH)",ylab ="Temperature (Fahrenheit)", main = "Temperature vs Wind
+Velocity")
+```
+
+#### Scatterplot matrix
+
+```{r}
+Ozone.Temp.Wind <- subset(airquality,select = c(Ozone,Temp,Wind))
+```
+
+```{r}
+head(Ozone.Temp.Wind)
+```
+
+```{r}
+pairs(Ozone.Temp.Wind)
+```
+
+#### Box plots
+
+```{r}
+boxplot(Temp ~ Month, data=airquality, xaxt = "n")
+```
+
+```{r}
+boxplot(Temp ~ Month, data=airquality, xaxt = "n"); axis(1, at=1:5,labels=c("May","June","July","August", "September"))
+```
+
+#### Graduating to ggplot2
+
+```{r}
+library(ggplot2)
+```
+
+#### How it works
+
+```{r}
+ggplot(airquality, aes(x=Temp))
+```
+
+```{r}
+ggplot(airquality, aes(x=Temp)) +
+  geom_histogram()
+```
+
+##### `ggplot(data_source, aes(map data components to graph     components)) +`
+
+##### `geom_xxx(arguments to modify the appearance of the geom) +`
+
+##### `theme_xxx(arguments to change the overall appearance) +`
+
+##### `labs(add axis-labels and a title)`
+
+```{r}
+
+```
