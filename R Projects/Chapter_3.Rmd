@@ -259,6 +259,25 @@ ggplot(airquality, aes(x=Temp)) +
 
 ##### `labs(add axis-labels and a title)`
 
+#### Histograms
+
+```{r}
+ggplot(airquality,aes(x=Temp)) +
+  geom_histogram(binwidth = 5,color = "black",fill="grey80") + 
+  theme_bw() +
+  labs(x = "Temperature (Fahrenheit)",y="Frequency", title= "Temperatures in the airquality Data Frame")
+```
+
+#### Bar Plots
+
+```{r}
+ggplot(Cars93,aes(x=Type)) + 
+  geom_bar()+ 
+  labs(y="Frequency",title="Car Type and Frequency in Cars93")
+```
+
+#### Grouped bar plots
+
 ```{r}
 
 ```
