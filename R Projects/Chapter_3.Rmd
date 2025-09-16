@@ -279,5 +279,118 @@ ggplot(Cars93,aes(x=Type)) +
 #### Grouped bar plots
 
 ```{r}
+Type.Origin <- subset(Cars93,select=c("Type","Origin"))
+```
+
+```{r}
+head(Type.Origin)
+```
+
+```{r}
+ggplot(Type.Origin,aes(x=Type,fill=Origin)) + 
+  geom_bar(position="dodge",color="black") +
+  scale_fill_grey(start=0,end=1)
+```
+
+```{r}
+females
+```
+
+```{r}
+females.df <- data.frame(females);
+females.df
+```
+
+```{r}
+ggplot(females.df, aes(x=Hair,y = Freq, fill=Eye))+
+  geom_bar(position="dodge",color="black",stat="identity") + 
+    scale_fill_grey(start=0,end=1)
+```
+
+#### SUGGESTED PROJECT: GROUPING ONE MORE TIME
+
+```{r}
+data("LifeCycleSavings")
+```
+
+```{r}
+library(tibble)
+```
+
+```{r}
+df <- head(LifeCycleSavings) %>%
+  select(pop15, pop75) %>%
+  rownames_to_column("Country")
+```
+
+```{r}
+df
+```
+
+```{r}
+library(tidyr)
+```
+
+```{r}
+df_long <- df %>%
+  gather(key = "AgeGroup", value = "Percent", pop15, pop75)
+```
+
+```{r}
+df_long
+```
+
+```{r}
+ggplot(df_long, aes(x = Country, y = Percent, fill = AgeGroup)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  scale_fill_grey(start = 0, end = 1, labels = c("Under 15", "Over 75")) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+#### Scatterplots
+
+```{r}
+ggplot(airquality, aes(x=Wind,y=Temp))+
+  geom_point()
+```
+
+#### The plot thickens . . .
+
+```{r}
+aq.no.NA <- drop_na(airquality)
+```
+
+```{r}
+median.Ozone <- median(aq.no.NA$Ozone)
+```
+
+```{r}
+Ozone_Level <- NULL
+```
+
+```{r}
+for(i in 1:nrow(aq.no.NA)){
+  if (aq.no.NA$Ozone[i] <= median.Ozone){
+    Ozone_Level[i] <- "Low"}
+    else{Ozone_Level[i] <- "High"}
+}
+```
+
+```{r}
+aq.Ozone.Level <- cbind(aq.no.NA, Ozone_Level)
+```
+
+```{r}
+head(aq.Ozone.Level)
+```
+
+```{r}
+ggplot(aq.Ozone.Level, aes(x=Wind,y=Temp,color=Ozone_Level))+
+  geom_point(size=3)+
+  scale_color_grey(start=0,end=1)
+```
+
+```{r}
 
 ```
